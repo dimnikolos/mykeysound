@@ -2,8 +2,6 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
-    for (int i=0; i<31; i++)
-        soundPlayerArrayLoaded[i] = false;
 }
 
 //--------------------------------------------------------------
@@ -16,20 +14,46 @@ void testApp::draw(){
     //QWERTYUIOP
     ofSetColor(0,0,0);
     for (int i=0; i<10; i++)
+    {
+        if (soundPlayerArray[i].getIsPlaying())
+            ofSetHexColor(0xFF0000);
         ofRect(20+(WIDTH+10)*i,30,WIDTH,WIDTH);
+        ofSetHexColor(0x000000);
+    }
     //ASDFGHJKL
     for (int i=0; i<9; i++)
+    {
+        if (soundPlayerArray[i+10].getIsPlaying())
+            ofSetHexColor(0xFF0000);
         ofRect(40+(WIDTH+10)*i,WIDTH+40,WIDTH,WIDTH);
+        ofSetHexColor(0x000000);
+    }
     //ZXCVBNM
     for (int i=0; i<7; i++)
+    {
+        if (soundPlayerArray[i+19].getIsPlaying())
+            ofSetHexColor(0xFF0000);
         ofRect(60+(WIDTH+10)*i, 2*WIDTH+50, WIDTH, WIDTH);
+        ofSetHexColor(0x000000);
+    }
+
     //ARROW KEYS
     for (int i=0; i<3; i++)
+    {
+        if (soundPlayerArray[i+26].getIsPlaying())
+            ofSetHexColor(0xFF0000);
         ofRect(60+(WIDTH+10)*(8+i), 3*WIDTH+50, WIDTH, WIDTH);
+        ofSetHexColor(0x000000);
+    }
+    if (soundPlayerArray[29].getIsPlaying())
+            ofSetHexColor(0xFF0000);
     ofRect(60+(WIDTH+10)*9,2*WIDTH+40, WIDTH, WIDTH);
+    ofSetHexColor(0x000000);
     //SPACE
+     if (soundPlayerArray[30].getIsPlaying())
+            ofSetHexColor(0xFF0000);
     ofRect(60+(WIDTH+10)*2,3*WIDTH+60, WIDTH*5, WIDTH);
-
+    ofSetHexColor(0x000000);
 }
 
 //--------------------------------------------------------------
@@ -53,7 +77,7 @@ for (int i=0; i<26; i++)
         keynum = 30;
     if (keynum!=-1)
     {
-        if (soundPlayerArrayLoaded[keynum])
+        if (soundPlayerArray[keynum].isLoaded())
             soundPlayerArray[keynum].play();
     }
 }
@@ -138,13 +162,12 @@ if (!button)
         }
     if (keynum!=-1)
     {
-        cout << "Setting: " << keynum;
         ofFileDialogResult dialogResult = ofSystemLoadDialog("Load Sound");
         if (dialogResult.bSuccess)
             {
             soundPlayerArray[keynum].loadSound(dialogResult.getPath());
-            soundPlayerArray[keynum].play();
-            soundPlayerArrayLoaded[keynum]=true;
+            if (soundPlayerArray[keynum].isLoaded())
+                soundPlayerArray[keynum].play();
             }
     }
     }

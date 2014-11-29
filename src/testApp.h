@@ -24,7 +24,6 @@ class testApp : public ofBaseApp{
 		ofTrueTypeFont myfont;
 
 		ofSoundPlayer soundPlayerArray[31];
-		bool soundPlayerArrayLoaded[31];
 		ofSoundPlayer aSoundPlayer;
 		char keyArray[31] = {'Q','W','E','R','T','Y','U','I','O','P',
                          'A','S','D','F','G','H','J','K','L',

@@ -5,3 +5,7 @@ Mykeysound is an openframeworks application that you can use to play sounds with
 It shows a virtual keyboard on screen. If you click on a key with your mouse you can assign a sound to it, and then when you press the key on the keyboard it will play the assigned sound.
 
 You can use it with Makey-Makey to play sounds with physical objects.
+
+OpenFrameworks 0.7.4.
+
+of_v0.7.4_win_cb_release
