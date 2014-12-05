@@ -2,6 +2,7 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
+    myfont.loadFont("arial.ttf", 32);
 }
 
 //--------------------------------------------------------------
@@ -18,6 +19,9 @@ void testApp::draw(){
         if (soundPlayerArray[i].getIsPlaying())
             ofSetHexColor(0xFF0000);
         ofRect(20+(WIDTH+10)*i,30,WIDTH,WIDTH);
+        ofSetHexColor(0xFFFFFF);
+        std::string keyString(1,keyArray[i]);
+        myfont.drawString(keyString,40+(WIDTH+10)*i,30+WIDTH-20);
         ofSetHexColor(0x000000);
     }
     //ASDFGHJKL
@@ -26,6 +30,9 @@ void testApp::draw(){
         if (soundPlayerArray[i+10].getIsPlaying())
             ofSetHexColor(0xFF0000);
         ofRect(40+(WIDTH+10)*i,WIDTH+40,WIDTH,WIDTH);
+        ofSetHexColor(0xFFFFFF);
+        std::string keyString(1,keyArray[i+10]);
+        myfont.drawString(keyString,60+(WIDTH+10)*i,2*WIDTH+20);
         ofSetHexColor(0x000000);
     }
     //ZXCVBNM
@@ -34,6 +41,9 @@ void testApp::draw(){
         if (soundPlayerArray[i+19].getIsPlaying())
             ofSetHexColor(0xFF0000);
         ofRect(60+(WIDTH+10)*i, 2*WIDTH+50, WIDTH, WIDTH);
+        ofSetHexColor(0xFFFFFF);
+        std::string keyString(1,keyArray[i+19]);
+        myfont.drawString(keyString,80+(WIDTH+10)*i, 3*WIDTH+30);
         ofSetHexColor(0x000000);
     }
 
