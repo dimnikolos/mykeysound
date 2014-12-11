@@ -88,7 +88,14 @@ for (int i=0; i<26; i++)
     if (keynum!=-1)
     {
         if (soundPlayerArray[keynum].isLoaded())
-            soundPlayerArray[keynum].play();
+        {
+            soundPlayerArray[keynum].setLoop(true);
+            if (soundPlayerArray[keynum].getIsPlaying())
+                soundPlayerArray[keynum].stop();
+            else
+                soundPlayerArray[keynum].play();
+        }
+
     }
 }
 
@@ -177,6 +184,7 @@ if (!button)
             {
             soundPlayerArray[keynum].loadSound(dialogResult.getPath());
             if (soundPlayerArray[keynum].isLoaded())
+                soundPlayerArray[keynum].setLoop(false);
                 soundPlayerArray[keynum].play();
             }
     }
